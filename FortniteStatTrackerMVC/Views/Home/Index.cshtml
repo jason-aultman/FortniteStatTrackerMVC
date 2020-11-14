@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to TsiDaddys Fortnite Stat tracker</h1>
+
+    <div>
+        <form asp-controller="PlayerStat" asp-action="Index" method="post">
+            <label>What is your Fortnite player Id:</label>
+            <input type="text" name="Id"/>
+            <input type="submit" />
+        </form>
+    </div>
+</div>
