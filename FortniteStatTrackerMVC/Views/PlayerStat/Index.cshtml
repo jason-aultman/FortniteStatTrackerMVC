@@ -3,18 +3,23 @@
 *@
 @{
 }
-@model PlayerStat 
-<div style="display:inline">
-    <img src="@Model.Avatar" />
-    <h1>
-        Player statistics for @Html.DisplayFor(Model => Model.EpicUserHandle)
-    </h1>
+@model PlayerStat
+<body style="background-color: azure">
+<div style="display:inline-block">
+    <img src="@Model.Avatar" width="400" />
+    <div style="text-align:center">
+        <h6>@Model.EpicUserHandle</h6>
+    </div>
+
+   
 </div>
 
-<ul style="list-style:none">
-    <li style="font-weight:bolder; font-size:28px; "><u>
-        @Html.Raw("Player Stats")
-    </u></li>
+@*<ul style="list-style:none">
+    <li style="font-weight:bolder; font-size:28px; ">
+        <u>
+            @Html.Raw("Player Stats")
+        </u>
+    </li>
 
     @for (int x = 0; x < Model.LifeTimeStats.Count; x++)
     {
@@ -24,6 +29,57 @@
         <li>
             @Html.DisplayFor(Model => Model.LifeTimeStats[x].Value)
         </li>
-    }
-</ul>
-   
+    }*@
+
+<!--</ul>-->
+<table>
+    <tr>
+        @for (int x = 0; x < Model.LifeTimeStats.Count; x++)
+        {
+
+            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+                @Model.LifeTimeStats[x].Key
+            </th>
+
+        }
+    </tr>
+    <tr>
+        @for (int x = 0; x < Model.LifeTimeStats.Count; x++)
+        {
+            <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
+                @Model.LifeTimeStats[x].Value
+            </td>
+        }
+    </tr>
+</table>
+<h3 style="font-weight:bolder">
+    <u>
+        Recent Matches
+    </u>
+</h3>
+@{ 
+    var listOfRecentMatches = Model.RecentMatches;
+}
+<h4>
+    Total Number of Recent Matches
+</h4>
+@Html.Raw(listOfRecentMatches.Count)
+<h4>
+     Date Played
+</h4>
+
+@Html.Raw(listOfRecentMatches[0].DateCollected)
+<h4>
+    Type of match played
+</h4>
+ @Html.Raw(listOfRecentMatches[0].Playlist)
+<h4>
+    Number of Kills for Match 1
+</h4>
+@Html.Raw(listOfRecentMatches[0].Kills)
+<h4>
+    Minutes played:
+</h4>
+@Html.Raw(listOfRecentMatches[0].MinutesPlayed)
+
+</body>

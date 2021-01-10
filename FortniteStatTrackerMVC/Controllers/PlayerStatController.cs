@@ -38,7 +38,7 @@ namespace FortniteStatTrackerMVC.Controllers
                 }
             }
             
-            return NotFound();
+            return View("ErrorPlayerNotFound");
 
             
         }

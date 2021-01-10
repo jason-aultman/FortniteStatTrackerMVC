@@ -1,15 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<body style="background-color:azure">
+    <div class="text-center">
+        <h1 class="display-4">Welcome to the Fortnite Stat tracker</h1>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Jasons Fortnite Stat tracker</h1>
-
-    <div>
-        <form asp-controller="PlayerStat" asp-action="Index" method="post">
-            <label>What is your Fortnite player Id:</label>
-            <input type="text" name="Id"/>
-            <input type="submit" />
-        </form>
+        <div>
+            <form asp-controller="PlayerStat" asp-action="Index" method="post">
+                <label>What is your Fortnite player Id:</label>
+                <input type="text" name="Id" required />
+                <input type="submit" />
+            </form>
+        </div>
+        <img src="https://pngimage.net/wp-content/uploads/2018/06/image-fortnite-png-7.png" />
     </div>
-</div>
+
+</body>
