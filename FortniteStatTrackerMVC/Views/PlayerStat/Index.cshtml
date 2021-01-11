@@ -52,34 +52,40 @@
         }
     </tr>
 </table>
-<h3 style="font-weight:bolder">
-    <u>
-        Recent Matches
-    </u>
-</h3>
-@{ 
-    var listOfRecentMatches = Model.RecentMatches;
-}
-<h4>
-    Total Number of Recent Matches
-</h4>
-@Html.Raw(listOfRecentMatches.Count)
-<h4>
-     Date Played
-</h4>
 
-@Html.Raw(listOfRecentMatches[0].DateCollected)
-<h4>
-    Type of match played
-</h4>
- @Html.Raw(listOfRecentMatches[0].Playlist)
-<h4>
-    Number of Kills for Match 1
-</h4>
-@Html.Raw(listOfRecentMatches[0].Kills)
-<h4>
-    Minutes played:
-</h4>
-@Html.Raw(listOfRecentMatches[0].MinutesPlayed)
+    <br />
+    <table caption ="Recent matches">
+        <tr>
+            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+                Id
+            </th>
+            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+                Kills
+            </th>
+            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+                Minutes Played
+            </th>
+            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+                Date Played
+            </th>
 
+        </tr>
+        @foreach(var match in Model.RecentMatches)
+        {
+    <tr>
+        <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
+            @match.Id
+        </td>
+        <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
+            @match.Kills
+        </td>
+        <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
+            @match.MinutesPlayed
+        </td>
+        <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
+            @match.DateCollected
+        </td>
+    </tr>
+        }
+    </table>
 </body>
