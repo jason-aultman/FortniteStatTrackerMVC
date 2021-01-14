@@ -4,88 +4,78 @@
 @{
 }
 @model PlayerStat
-<body style="background-color: azure">
-<div style="display:inline-block">
-    <img src="@Model.Avatar" width="400" />
-    <div style="text-align:center">
-        <h6>@Model.EpicUserHandle</h6>
-    </div>
+    <body style="background-color: azure">
+        <div style="text-align:center">
+            <h1 style="text-decoration:underline">Stats</h1>
+        </div>
+        <table>
+            <tr style="background-color:cadetblue">
+                @for (int x = 0; x < Model.LifeTimeStats.Count; x++)
+                {
 
-   
-</div>
+                    <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+                        @Model.LifeTimeStats[x].Key
+                    </th>
 
-@*<ul style="list-style:none">
-    <li style="font-weight:bolder; font-size:28px; ">
-        <u>
-            @Html.Raw("Player Stats")
-        </u>
-    </li>
+                }
+            </tr>
+            <tr>
+                @for (int x = 0; x < Model.LifeTimeStats.Count; x++)
+                {
+                    <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
+                        @Model.LifeTimeStats[x].Value
+                    </td>
+                }
+            </tr>
+        </table>
 
-    @for (int x = 0; x < Model.LifeTimeStats.Count; x++)
-    {
-        <li style="font-weight:bolder; font-size:26px">
-            @Html.DisplayFor(Model => Model.LifeTimeStats[x].Key)
-        </li>
-        <li>
-            @Html.DisplayFor(Model => Model.LifeTimeStats[x].Value)
-        </li>
-    }*@
+            <br />
+            <div class="container">
+                <div class="row">
 
-<!--</ul>-->
-<table>
-    <tr>
-        @for (int x = 0; x < Model.LifeTimeStats.Count; x++)
-        {
+               <div class="col-md">
+                <table caption="Recent matches">
+                    <tr style="background-color:cadetblue">
+                        <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+                            Id
+                        </th>
+                        <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+                            Kills
+                        </th>
+                        <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+                            Minutes Played
+                        </th>
+                        <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+                            Date Played
+                        </th>
+                    </tr>
+                    @foreach (var match in Model.RecentMatches)
+                    {
+                        <tr>
+                            <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
+                                @match.Id
+                            </td>
+                            <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
+                                @match.Kills
+                            </td>
+                            <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
+                                @match.MinutesPlayed
+                            </td>
+                            <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
+                                @match.DateCollected
+                            </td>
+                        </tr>
+                    }
+                </table>
+               </div>
+                <div class="col-sm">
+                    <img src="@Model.Avatar" width="300" class="rounded-circle" />
+                    <div style="text-align:center">
+                        <h6>@Model.EpicUserHandle</h6>
+                    </div>
 
-            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
-                @Model.LifeTimeStats[x].Key
-            </th>
-
-        }
-    </tr>
-    <tr>
-        @for (int x = 0; x < Model.LifeTimeStats.Count; x++)
-        {
-            <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
-                @Model.LifeTimeStats[x].Value
-            </td>
-        }
-    </tr>
-</table>
-
-    <br />
-    <table caption ="Recent matches">
-        <tr>
-            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
-                Id
-            </th>
-            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
-                Kills
-            </th>
-            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
-                Minutes Played
-            </th>
-            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
-                Date Played
-            </th>
-
-        </tr>
-        @foreach(var match in Model.RecentMatches)
-        {
-    <tr>
-        <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
-            @match.Id
-        </td>
-        <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
-            @match.Kills
-        </td>
-        <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
-            @match.MinutesPlayed
-        </td>
-        <td style="font-size:small; outline:1px solid black; padding:10px; text-align:center">
-            @match.DateCollected
-        </td>
-    </tr>
-        }
-    </table>
+                </div>
+                    
+                 </div>
+            </div>
 </body>
