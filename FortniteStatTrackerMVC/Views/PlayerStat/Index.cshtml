@@ -14,35 +14,21 @@
    
 </div>
 
-@*<ul style="list-style:none">
-    <li style="font-weight:bolder; font-size:28px; ">
-        <u>
-            @Html.Raw("Player Stats")
-        </u>
-    </li>
 
-    @for (int x = 0; x < Model.LifeTimeStats.Count; x++)
-    {
-        <li style="font-weight:bolder; font-size:26px">
-            @Html.DisplayFor(Model => Model.LifeTimeStats[x].Key)
-        </li>
-        <li>
-            @Html.DisplayFor(Model => Model.LifeTimeStats[x].Value)
-        </li>
-    }*@
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            @for (int x = 0; x < Model.LifeTimeStats.Count; x++)
+            {
 
-<!--</ul>-->
-<table>
-    <tr>
-        @for (int x = 0; x < Model.LifeTimeStats.Count; x++)
-        {
+                <td style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+                    @Model.LifeTimeStats[x].Key
+                </td>
 
-            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
-                @Model.LifeTimeStats[x].Key
-            </th>
-
-        }
-    </tr>
+            }
+        </tr>
+    </thead>
+    <tbody>
     <tr>
         @for (int x = 0; x < Model.LifeTimeStats.Count; x++)
         {
@@ -51,25 +37,28 @@
             </td>
         }
     </tr>
+        </tbody>
 </table>
 
     <br />
-    <table caption ="Recent matches">
-        <tr>
-            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+    <table caption ="Recent matches" class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+            <td style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
                 Id
-            </th>
-            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+            </td>
+            <td style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
                 Kills
-            </th>
-            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+            </td>
+            <td style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
                 Minutes Played
-            </th>
-            <th style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
+            </td>
+            <td style="font-size:large; outline:1px solid black; padding:10px; text-align:center">
                 Date Played
-            </th>
-
+            </td>
         </tr>
+        </thead>
+        <tbody>
         @foreach(var match in Model.RecentMatches)
         {
     <tr>
@@ -87,5 +76,6 @@
         </td>
     </tr>
         }
+            </tbody>
     </table>
 </body>
