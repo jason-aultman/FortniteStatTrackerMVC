@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<body style="background-color:azure">
+<body style="background-color: azure">
     <div class="text-center">
         <h1 class="display-4">Welcome to the <b>Fortnite</b><sup>&copy</sup> stat tracker</h1>
 
@@ -9,7 +9,7 @@
             <form asp-controller="PlayerStat" asp-action="Index" method="post">
                 <label>What is your Fortnite player Id:</label>
                 <input type="text" name="Id" required />
-                <input class="btn btn-primary" type="submit" />
+                <input class ="btn btn-primary btn-sm" type="submit" />
             </form>
         </div>
         <img src="https://pngimage.net/wp-content/uploads/2018/06/image-fortnite-png-7.png" />
